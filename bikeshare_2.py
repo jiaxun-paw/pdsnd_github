@@ -7,6 +7,11 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
+MONTHS = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august',
+          'september', 'october', 'november', 'december', 'all']
+
+DAYS = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday', 'all']
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -27,26 +32,18 @@ def get_filters():
             # repeat user input request
 
     # get user input for month (all, january, february, ... , june)
-    valid_months = list(c.month_name)
-    valid_months.append('all')
-    valid_months = [month_name.lower() for month_name in valid_months]
-
     while True:
         month = input('Please enter month (all, january, february, ... , june): ').lower()
-        if valid_months.count(month) != 0:
+        if MONTHS.count(month) != 0:
             break
         else:
             print('Invalid city entered.\n')
             # repeat user input request
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
-    valid_days = list(c.day_name)
-    valid_days.append('all')
-    valid_days = [day_name.lower() for day_name in valid_days]
-
     while True:
         day = input('Please enter day of week (all, monday, tuesday, ... sunday): ').lower()
-        if valid_days.count(day) != 0:
+        if DAYS.count(day) != 0:
             break
         else:
             print('Invalid day entered.\n')
@@ -80,9 +77,7 @@ def load_data(city, month, day):
     # filter by month if applicable
     if month != 'all':
         # use the index of the months list to get the corresponding int
-        months = [e.lower() for e in c.month_name]
-        del months[0]
-        month = months.index(month) + 1
+        month = MONTHS.index(month) + 1
 
         # filter by month to create the new dataframe
         df = df[df.month == month]
