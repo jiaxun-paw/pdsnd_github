@@ -5,7 +5,12 @@ Created on 21-Aug-2020.
 <!--- Replace the Project Title -->
 
 ### Description
-Describe what your project is about and what it does
+An interactive command line application that computes descriptive statistics of bike share systems for major cities in the United States.
+
+#### Cities currently in scope:
+* Chicago
+* New York City
+* Washington
 
 ### Files used
 Include the files used
